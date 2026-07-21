@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quartel Secreto</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    background:#0b0f17;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+    text-align:center;
+    padding:20px;
+}
+
+header img{
+    width:90px;
+}
+
+header h1{
+    color:#00ffd5;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:#1b1f2a;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    margin-top:15px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<img src="logo.png" alt="Logo">
+
+<h1>QUARTEL SECRETO</h1>
+
+<h2 id="agente"></h2>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Painel Principal</h2>
+
+<p>Escolhe uma opção.</p>
+
+<button onclick="window.location='missoes.html'">
+📋 Missões
+</button>
+
+<button onclick="window.location='cofre.html'">
+📁 Cofre
+</button>
+
+<button onclick="window.location='chat.html'">
+💬 Chat
+</button>
+
+<button onclick="logout()">
+🚪 Terminar Sessão
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let agente=localStorage.getItem("agente");
+
+document.getElementById("agente").innerHTML="Bem-vindo, "+agente;
+
+function logout(){
+
+localStorage.clear();
+
+window.location="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
