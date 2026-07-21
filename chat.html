@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Secreto</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+    background:#0b0f17;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:20px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+header img{
+    width:90px;
+}
+
+#mensagens{
+    background:#1b1f2a;
+    border-radius:15px;
+    padding:15px;
+    height:350px;
+    overflow-y:auto;
+    margin-bottom:15px;
+}
+
+.mensagem{
+    background:#2b3245;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="logo.png" alt="Logo">
+
+<h1>💬 Chat Secreto</h1>
+
+</header>
+
+<div id="mensagens"></div>
+
+<input id="texto" placeholder="Escreve uma mensagem...">
+
+<button onclick="enviar()">Enviar</button>
+
+<script>
+
+let agente = localStorage.getItem("agente") || "Agente";
+
+let mensagens =
+JSON.parse(localStorage.getItem("chat")) || [];
+
+mostrar();
+
+function enviar(){
+
+let texto=document.getElementById("texto").value;
+
+if(texto=="") return;
+
+mensagens.push({
+agente:agente,
+texto:texto
+});
+
+localStorage.setItem("chat",JSON.stringify(mensagens));
+
+document.getElementById("texto").value="";
+
+mostrar();
+
+}
+
+function mostrar(){
+
+let html="";
+
+mensagens.forEach(function(m){
+
+html+=`
+<div class="mensagem">
+<b>${m.agente}</b><br>
+${m.texto}
+</div>
+`;
+
+});
+
+document.getElementById("mensagens").innerHTML=html;
+
+}
+
+</script>
+
+</body>
+</html>
