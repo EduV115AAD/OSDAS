@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quartel Secreto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="login-box">
+    <h1>🕵️ Quartel Secreto</h1>
+    <p>Área Reservada</p>
+
+    <input type="text" id="username" placeholder="Nome Secreto">
+
+    <input type="password" id="password" placeholder="Palavra-passe">
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="erro"></p>
+
+</div>
+
+<script>
+
+function login(){
+
+let nome=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(nome==="Agente Gata Rosa" && pass==="243"){
+
+localStorage.setItem("agente","Agente Gata Rosa");
+window.location="dashboard.html";
+
+}
+
+else if(nome==="Agente Dragão Preto" && pass==="115"){
+
+localStorage.setItem("agente","Agente Dragão Preto");
+window.location="dashboard.html";
+
+}
+
+else{
+
+document.getElementById("erro").innerHTML="Nome ou palavra-passe incorretos.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
