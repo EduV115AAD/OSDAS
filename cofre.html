@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cofre Secreto</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+    background:#0b0f17;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:20px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+header img{
+    width:90px;
+}
+
+.card{
+    background:#1b1f2a;
+    padding:20px;
+    border-radius:15px;
+}
+
+textarea{
+    width:100%;
+    height:180px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#2b3245;
+    color:white;
+    resize:vertical;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<img src="logo.png" alt="Logo">
+
+<h1>🔒 Cofre Secreto</h1>
+
+</header>
+
+<div class="card">
+
+<h2>Guardar Informação</h2>
+
+<textarea id="nota" placeholder="Escreve aqui informações importantes..."></textarea>
+
+<button onclick="guardar()">
+💾 Guardar
+</button>
+
+<button onclick="apagar()">
+🗑️ Apagar
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("nota").value =
+localStorage.getItem("cofre") || "";
+
+function guardar(){
+
+localStorage.setItem(
+"cofre",
+document.getElementById("nota").value
+);
+
+alert("Informação guardada.");
+
+}
+
+function apagar(){
+
+if(confirm("Apagar tudo?")){
+
+localStorage.removeItem("cofre");
+
+document.getElementById("nota").value="";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
