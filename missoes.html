@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missões</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    background:#0b0f17;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:20px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+header img{
+    width:90px;
+}
+
+h1{
+    color:#00ffd5;
+}
+
+.card{
+    background:#1b1f2a;
+    padding:20px;
+    border-radius:15px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:10px;
+    border:none;
+    background:#2a3040;
+    color:white;
+}
+
+button{
+    padding:14px;
+    width:100%;
+    margin-top:10px;
+}
+
+#lista{
+    margin-top:30px;
+}
+
+.missao{
+    background:#242c3d;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<img src="logo.png" alt="Logo">
+
+<h1>MISSÕES SECRETAS</h1>
+
+</header>
+
+<div class="card">
+
+<input id="tipo" placeholder="Tipo de missão">
+
+<textarea id="descricao" placeholder="Descrição da missão"></textarea>
+
+<select id="estado">
+<option>Pendente</option>
+<option>Em progresso</option>
+<option>Concluída</option>
+</select>
+
+<button onclick="criarMissao()">
+Criar Missão
+</button>
+
+</div>
+
+<div id="lista"></div>
+
+<script>
+
+let numero=1;
+
+function criarMissao(){
+
+let tipo=document.getElementById("tipo").value;
+
+let descricao=document.getElementById("descricao").value;
+
+let estado=document.getElementById("estado").value;
+
+if(tipo=="" || descricao==""){
+alert("Preenche todos os campos.");
+return;
+}
+
+document.getElementById("lista").innerHTML+=`
+
+<div class="missao">
+
+<h2>Missão ${numero}</h2>
+
+<p><b>Tipo:</b> ${tipo}</p>
+
+<p><b>Descrição:</b> ${descricao}</p>
+
+<p><b>Estado:</b> ${estado}</p>
+
+</div>
+
+`;
+
+numero++;
+
+document.getElementById("tipo").value="";
+document.getElementById("descricao").value="";
+document.getElementById("estado").selectedIndex=0;
+
+}
+
+</script>
+
+</body>
+</html>
